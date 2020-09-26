@@ -9,6 +9,8 @@ function createWindow (){
         }
     })
 
+    win.webContents.openDevTools()
+
     win.loadFile('src/index.html')
 
     var menu = Menu.buildFromTemplate([
