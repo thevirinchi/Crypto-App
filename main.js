@@ -1,6 +1,6 @@
-const { app, BrowserWindow } = require ('electron')
+const { app, BrowserWindow, Menu } = require ('electron')
 
-function createWindw (){
+function createWindow (){
     const win = new BrowserWindow({
         width: 800, height:600,
         webPreferences: {
@@ -10,7 +10,18 @@ function createWindw (){
 
     win.loadFile('index.html')
 
-    win.webContents.openDevTools()
+    var menu = Menu.buildFromTemplate([
+        {
+            label: 'Menu',
+            submenu: [
+                {label: 'Adgust Notification Value'},
+                {label: 'CoinMarketCap'},
+                {label: 'Exit'}
+            ]
+        }
+    ])
+
+    Menu.setApplicationMenu(menu)
 }
 
 app.whenReady().then(createWindow)
